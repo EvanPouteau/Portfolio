@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
     category: 'app',
     featured: true,
     live: 'https://egyptian-arabic-app-phi.vercel.app',
-    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind 4', 'Supabase', 'PostgreSQL'],
+    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind 4', 'Supabase', 'PostgreSQL', 'Azure Speech', 'Gemini'],
     role: { fr: 'Conception, développement, contenu', en: 'Design, development, content' },
     context: { fr: 'Projet personnel', en: 'Personal project' },
     status: { fr: 'En production', en: 'In production' },
@@ -77,6 +77,7 @@ export const PROJECTS: Project[] = [
       { value: '30', label: { fr: 'modules', en: 'modules' } },
       { value: '141', label: { fr: 'leçons', en: 'lessons' } },
       { value: '554', label: { fr: 'mots', en: 'words' } },
+      { value: '524', label: { fr: 'prononciations', en: 'pronunciations' } },
       { value: 'A1→B2', label: { fr: 'niveaux', en: 'levels' } },
     ],
     shots: [
@@ -94,8 +95,8 @@ export const PROJECTS: Project[] = [
       {
         h: { fr: 'Ce que j’ai construit', en: 'What I built' },
         p: {
-          fr: 'Un parcours linéaire de 30 modules des niveaux A1 à B2, où chaque leçon débloque la suivante. Un quiz par module qui exige 70 % de réussite <em>et</em> la lecture de toutes les leçons. Une leçon du jour qui retire au hasard des mots parmi ceux déjà vus, et ne demande jamais ce qui n’a pas été appris. Un test de placement, un glossaire de 554 mots et une page dédiée à l’Arabizi avec les quatre sons arabes écoutables. La progression est liée au compte, mais le contenu reste consultable sans inscription.',
-          en: 'A linear course of 30 modules spanning levels A1 to B2, where each lesson unlocks the next. A quiz per module requiring 70% <em>and</em> every lesson read. A daily lesson that draws words at random from what you have already covered, and never asks for anything unseen. A placement test, a 554-word glossary and a page devoted to Arabizi with the four Arabic sounds playable. Progress is tied to an account, but the content itself stays readable without signing up.',
+          fr: 'Un parcours linéaire de 30 modules des niveaux A1 à B2, où chaque leçon débloque la suivante. Un quiz par module qui exige 70 % de réussite <em>et</em> la lecture de toutes les leçons. Une leçon du jour qui retire au hasard des mots parmi ceux déjà vus, et ne demande jamais ce qui n’a pas été appris. Un test de placement, un glossaire de 554 mots et une page dédiée à l’Arabizi avec les quatre sons arabes écoutables. Chaque quiz tire 10 questions dans une banque qui peut en compter jusqu’à 48 par module, un exercice d’écoute fait retrouver le sens d’un mot entendu, et Ostaz, un tuteur IA (Gemini), répond en arabe, en Arabizi et en français, dans la limite de 20 messages par jour. La progression est liée au compte, mais le contenu reste consultable sans inscription.',
+          en: 'A linear course of 30 modules spanning levels A1 to B2, where each lesson unlocks the next. A quiz per module requiring 70% <em>and</em> every lesson read. A daily lesson that draws words at random from what you have already covered, and never asks for anything unseen. A placement test, a 554-word glossary and a page devoted to Arabizi with the four Arabic sounds playable. Each quiz draws 10 questions from a bank of up to 48 per module, a listening exercise asks you to find the meaning of a word you hear, and Ostaz, an AI tutor (Gemini), answers in Arabic, Arabizi and French, up to 20 messages a day. Progress is tied to an account, but the content itself stays readable without signing up.',
         },
       },
       {
@@ -103,6 +104,20 @@ export const PROJECTS: Project[] = [
         p: {
           fr: 'Tout le contenu pédagogique venait de 15 fichiers JSON rédigés en amont, aux structures irrégulières : un fichier de conjugaisons ne suit pas du tout le schéma « module → jours → leçons » des autres. Le schéma PostgreSQL ayant été écrit avant que la forme exacte des données soit connue, j’ai préféré écrire un script d’import qui <em>documente</em> chaque correspondance non triviale plutôt que de tordre les données pour les faire entrer dans les tables.',
           en: 'All the teaching content came from 15 JSON files written beforehand, with irregular shapes: a conjugation file does not follow the “module → days → lessons” structure at all. Since the PostgreSQL schema had been written before the exact shape of the data was known, I chose to write an import script that <em>documents</em> every non-obvious mapping rather than bending the data to fit the tables.',
+        },
+      },
+      {
+        h: { fr: 'La prononciation', en: 'Pronunciation' },
+        p: {
+          fr: 'Chaque mot du vocabulaire s’écoute. La voix de synthèse égyptienne d’Azure se trompait sur environ un mot sur quatre : consonnes finales avalées, voyelles déformées, ق lu « q » alors que les Cairotes en font un coup de glotte. Ni ralentir la voix ni lui imposer la phonétique ne suffisait. J’ai donc écouté les 524 sons un par un dans un outil de tri fait pour l’occasion : 372 ont été gardés, et les 152 faux ont été réenregistrés par une locutrice native du Caire. Le site ne sert que des sons vérifiés.',
+          en: 'Every vocabulary word can be played. Azure’s Egyptian synthetic voice got about one word in four wrong: swallowed final consonants, distorted vowels, ق read as “q” where Cairenes use a glottal stop. Slowing the voice down or forcing phonetics was not enough. So I listened to all 524 clips one by one in a sorting tool built for the purpose: 372 were kept, and the 152 wrong ones were re-recorded by a native Cairo speaker. The site only serves verified audio.',
+        },
+      },
+      {
+        h: { fr: 'Performances', en: 'Performance' },
+        p: {
+          fr: 'Le contenu était relu en base à chaque visite. Mis en cache côté serveur, il fait passer le chargement d’une page de 0,6–2,2 s à 0,25–0,30 s, mesuré en production. Contrepartie assumée : un contenu réimporté met jusqu’à une heure à apparaître.',
+          en: 'The content was read from the database on every visit. Cached on the server, it brings page loads from 0.6–2.2 s down to 0.25–0.30 s, measured in production. Accepted trade-off: re-imported content takes up to an hour to show.',
         },
       },
       {

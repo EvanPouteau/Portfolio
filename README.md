@@ -23,7 +23,9 @@ Auvergne, je cherche un **stage en développement web du 12 avril au
 | **Un écran de chargement** qui suit l'avancement réel de la pièce, pour qu'on ne croie jamais le site vide. | **Pensé pour le téléphone** : annotations replacées, fenêtres plein écran, aide adaptée au tactile. |
 
 - **Huit projets**, dont deux applications Next.js + Supabase en production :
-  une app pour apprendre l'arabe égyptien et une app de suivi de musculation.
+  une app pour apprendre l'arabe égyptien (30 modules, 554 mots dont 524 avec
+  une prononciation vérifiée à l'oreille, exercice d'écoute, tuteur IA) et une
+  app de suivi de musculation.
 - **Un vrai gestionnaire de fenêtres** : déplacer, redimensionner, aimanter
   aux bords, Alt+Tab, menu Démarrer avec recherche, thème clair ou sombre,
   français ou anglais.
@@ -44,13 +46,21 @@ problèmes de la version téléphone, et je gère le déploiement (GitHub → Ve
 La première version de ce portfolio, un site statique, est dans
 [`legacy/`](legacy/).
 
-**Avec une IA.** Cette version Next.js + Three.js a été développée avec
-Claude, un assistant de code, que j'ai dirigé : je décris ce que je veux, je
-teste, je refuse ou je fais reprendre ce qui ne va pas. Les mécanismes les plus
-pointus, comme la compilation des shaders en arrière-plan ou l'éclairage
-d'environnement, sont issus de ce travail, et je les documente ci-dessous.
-Savoir mener un projet réel de bout en bout avec ces outils fait partie des
-compétences que je veux montrer.
+**L'IA comme outil de productivité.** J'ai les bases sur lesquelles repose
+ce projet, acquises en BUT MMI et sur mes projets personnels : HTML, CSS,
+JavaScript et TypeScript, React et Next.js, PHP et SQL, conception de bases de
+données, déploiement. Je m'en sers pour piloter une IA de code (Claude), qui
+me permet d'aller beaucoup plus vite et d'aborder des mécanismes que je
+n'aurais pas pu écrire seul en si peu de temps, comme la compilation des
+shaders en arrière-plan ou l'éclairage d'environnement de la scène 3D.
+Cette version Next.js + Three.js a été développée ainsi : je fixe l'objectif
+et les contraintes, je relis, je teste sur ordinateur et sur téléphone, et je
+fais reprendre ce qui ne va pas.
+
+Gérer et piloter une IA dans mon travail est une compétence que je veux
+développer et mettre en avant : savoir lui confier les bonnes tâches, vérifier
+ce qu'elle produit et garder la maîtrise des choix, du concept jusqu'à la mise
+en production.
 
 ## Stack
 
