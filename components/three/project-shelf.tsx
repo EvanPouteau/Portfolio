@@ -107,7 +107,7 @@ export function ProjectShelf({
         return (
           <group key={cx}>
             {/* planche */}
-            <RoundedBox args={[SHELF_LEN, 0.03, 0.22]} radius={0.006} smoothness={3} position={[cx, SHELF_Y, SHELF_Z]} castShadow receiveShadow>
+            <RoundedBox args={[SHELF_LEN, 0.03, 0.22]} radius={0.006} smoothness={2} position={[cx, SHELF_Y, SHELF_Z]} castShadow receiveShadow>
               <meshStandardMaterial map={wood?.map} roughnessMap={wood?.rough} roughness={0.6} />
             </RoundedBox>
             {/* équerres */}

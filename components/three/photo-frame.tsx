@@ -32,7 +32,7 @@ export function PhotoFrame({
   return (
     <group>
       {/* baguette */}
-      <RoundedBox args={[outerW, outerH, 0.022]} radius={0.006} smoothness={3} castShadow receiveShadow>
+      <RoundedBox args={[outerW, outerH, 0.022]} radius={0.006} smoothness={1} castShadow receiveShadow>
         <meshStandardMaterial color={frame} roughness={0.55} metalness={0.05} />
       </RoundedBox>
       {/* passe-partout */}

@@ -8,11 +8,12 @@
    continue (pas un index modulo), si bien que passer de la dernière carte à
    la première tourne d'un cran au lieu de faire le tour complet. */
 
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { MeshReflectorMaterial, RoundedBox, Sparkles } from '@react-three/drei';
 import { StudioEnv } from './studio-env';
 import { Warmup, useWarmup } from './warmup';
+import { AdaptiveQuality, startDpr } from './quality';
 import * as THREE from 'three';
 import { PROJECTS } from '@/content/projects';
 import { roundedRect } from './materials';
@@ -76,7 +77,7 @@ function Card({ index, texture, ring, onPick }: {
         <meshBasicMaterial ref={rim} color={color} transparent opacity={0} toneMapped={false} />
       </mesh>
       {/* dos et tranche de la carte */}
-      <RoundedBox args={[CARD_W + 0.02, CARD_H + 0.02, 0.02]} radius={0.03} smoothness={3} position={[0, 0, -0.011]} castShadow>
+      <RoundedBox args={[CARD_W + 0.02, CARD_H + 0.02, 0.02]} radius={0.03} smoothness={2} position={[0, 0, -0.011]} castShadow>
         <meshStandardMaterial color="#1c1410" roughness={0.3} metalness={0.6} />
       </RoundedBox>
       <mesh geometry={geo}>
@@ -171,11 +172,12 @@ function Ring({ target, onTarget, onOpen }: Props) {
 
 export default function CarouselScene(props: Props) {
   const warm = useWarmup();
+  const [dpr, setDpr] = useState(startDpr);
   return (
     <Canvas
       frameloop={warm.live ? 'always' : 'never'}
       style={{ opacity: warm.live ? 1 : 0, transition: 'opacity .5s ease' }}
-      dpr={[1, 1.75]}
+      dpr={dpr}
       camera={{ position: [0, 0.45, RADIUS + 3.1], fov: 40 }}
       gl={{ antialias: true }}
       onCreated={({ gl }) => {
@@ -197,7 +199,7 @@ export default function CarouselScene(props: Props) {
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, LIFT - CARD_H / 2 - 0.16, 0]}>
         <planeGeometry args={[30, 30]} />
         <MeshReflectorMaterial
-          resolution={512}
+          resolution={256}
           blur={[400, 120]}
           mixBlur={1}
           mixStrength={6}
@@ -209,7 +211,8 @@ export default function CarouselScene(props: Props) {
           mirror={0.6}
         />
       </mesh>
-      <Sparkles count={60} scale={[RADIUS * 3, 3, RADIUS * 3]} size={1.6} speed={0.25} opacity={0.35} color="#ffd2a0" />
+      <Sparkles count={30} scale={[RADIUS * 3, 3, RADIUS * 3]} size={1.6} speed={0.25} opacity={0.35} color="#ffd2a0" />
+      <AdaptiveQuality onChange={setDpr} />
       <Warmup {...warm.warmup} />
     </Canvas>
   );

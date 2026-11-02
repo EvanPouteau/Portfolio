@@ -6,6 +6,7 @@
 import { Suspense, useEffect, useMemo, useRef, useState, type MutableRefObject } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, useProgress } from '@react-three/drei';
+import { AdaptiveQuality, startDpr } from './quality';
 import { StudioEnv } from './studio-env';
 import { Warmup, useWarmup } from './warmup';
 import * as THREE from 'three';
@@ -174,8 +175,10 @@ function Scene({
       <ProjectShelf projects={projects} onOpen={onOpenProject} onHover={onHover} hoverObj={hoverObj} disabled={mode !== 'idle'} />
       <LabelProjector anchors={anchors} registry={registry} />
 
-      <ContactShadows position={[0, 0.012, 0]} opacity={0.55} scale={7} blur={2.4} far={1.4} />
-      <ContactShadows position={[0, 0.7716, 0]} opacity={0.5} scale={[2.6, 1.2]} blur={1.6} far={0.3} resolution={512} />
+      {/* Ombres de contact calculées sur deux images puis figées : chacune
+          redessinait toute la pièce à chaque image, pour une pièce immobile. */}
+      <ContactShadows frames={2} position={[0, 0.012, 0]} opacity={0.55} scale={7} blur={2.4} far={1.4} />
+      <ContactShadows frames={2} position={[0, 0.7716, 0]} opacity={0.5} scale={[2.6, 1.2]} blur={1.6} far={0.3} resolution={512} />
 
       <StaticShadows />
       <CameraRig mode={mode} onProgress={onProgress} onDone={onDone} />
@@ -257,6 +260,7 @@ export default function DeskScene(props: Props) {
      l'OS, lui, attend : l'OS reste visible jusqu'à ce que la pièce soit prête.) */
   const warm = useWarmup();
   const { live } = warm;
+  const [dpr, setDpr] = useState(startDpr);
   const { mode, onDone, onLoad } = props;
 
   /* Pour l'écran de chargement : images (jusqu'à 80 %), puis compilation. */
@@ -274,10 +278,12 @@ export default function DeskScene(props: Props) {
         shadows="percentage"
         frameloop={live ? 'always' : 'never'}
         style={{ opacity: live ? 1 : 0, transition: 'opacity .7s ease' }}
-        dpr={[1, 1.75]}
+        dpr={dpr}
         camera={{ position: START_POS.toArray(), fov: 38, near: 0.05, far: 30 }}
         gl={{ antialias: true, powerPreference: 'high-performance' }}
-        onCreated={({ gl }) => {
+        onCreated={({ gl, scene }) => {
+          /* ?debug3d expose la scène dans la console, pour mesurer son poids */
+          if (location.search.includes('debug3d')) (window as unknown as { __scene: unknown }).__scene = scene;
           /* En production, ne pas relire le journal de chaque shader : cette
              lecture attend la fin de la compilation et bloque la page. */
           gl.debug.checkShaderErrors = process.env.NODE_ENV !== 'production';
@@ -285,6 +291,7 @@ export default function DeskScene(props: Props) {
           gl.toneMappingExposure = 1.05;
         }}
       >
+        <AdaptiveQuality onChange={setDpr} />
         <Suspense fallback={null}>
           <Scene {...props} warm={warm} onHover={setHoverSlug} hoverObj={hoverObj} anchors={anchors} registry={registry} />
         </Suspense>

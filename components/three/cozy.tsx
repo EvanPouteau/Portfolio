@@ -49,7 +49,7 @@ function Pot({ radius, height, color = TERRACOTTA, rim = true }: { radius: numbe
       ...(rim ? [[r, h * 0.84], [r * 1.04, h * 0.86], [r * 1.04, h], [r * 0.96, h]] : [[r, h]]),
       [r * 0.9, h * 0.94], [0, h * 0.9],
     ].map(([x, y]) => new THREE.Vector2(x, y));
-    return new THREE.LatheGeometry(pts, 40);
+    return new THREE.LatheGeometry(pts, 28);
   }, [radius, height, rim]);
   return (
     <group>
@@ -373,17 +373,19 @@ export function StringLights({ from, to, sag = 0.18, count = 22 }: {
         <meshStandardMaterial color="#2a2018" roughness={0.6} />
       </mesh>
       <instancedMesh ref={bulbs} args={[undefined, undefined, count]}>
-        <sphereGeometry args={[0.012, 10, 8]} />
+        <sphereGeometry args={[0.012, 6, 4]} />
         <meshBasicMaterial color="#ffd59a" toneMapped={false} />
       </instancedMesh>
       <points ref={halo} geometry={haloGeo}>
         <pointsMaterial map={tex} size={0.16} sizeAttenuation transparent opacity={0.85} depthWrite={false} blending={THREE.AdditiveBlending} toneMapped={false} />
       </points>
-      {/* trois vraies lumières suffisent à réchauffer le mur */}
-      {[0.2, 0.5, 0.8].map((u) => {
-        const p = curve.getPoint(u);
-        return <pointLight key={u} position={[p.x, p.y - 0.05, p.z + 0.15]} intensity={0.55} distance={1.7} decay={2} color="#ffc27a" />;
-      })}
+      {/* une seule vraie lumière, au milieu, réchauffe le mur : chaque lumière
+          ponctuelle se paie sur chaque pixel, et trois coûtaient cher aux
+          petites cartes graphiques pour une différence à peine visible */}
+      {(() => {
+        const p = curve.getPoint(0.5);
+        return <pointLight position={[p.x, p.y - 0.05, p.z + 0.2]} intensity={1.2} distance={2.8} decay={1.8} color="#ffc27a" />;
+      })()}
     </group>
   );
 }
@@ -408,11 +410,11 @@ export function Candle({ position }: { position: [number, number, number] }) {
     <group position={position}>
       {/* pot en verre ambré */}
       <mesh castShadow>
-        <cylinderGeometry args={[0.036, 0.034, 0.075, 28, 1, true]} />
+        <cylinderGeometry args={[0.036, 0.034, 0.075, 18, 1, true]} />
         <meshStandardMaterial color="#c98a4b" transparent opacity={0.55} roughness={0.15} side={THREE.DoubleSide} />
       </mesh>
       <mesh position={[0, -0.012, 0]}>
-        <cylinderGeometry args={[0.033, 0.033, 0.05, 24]} />
+        <cylinderGeometry args={[0.033, 0.033, 0.05, 16]} />
         <meshStandardMaterial color="#f4e6cf" roughness={0.9} />
       </mesh>
       <mesh position={[0, 0.018, 0]}>

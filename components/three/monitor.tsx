@@ -52,10 +52,10 @@ export function Monitor({
   return (
     <group>
       {/* pied : socle plat et colonne */}
-      <RoundedBox args={[0.3, 0.012, 0.2]} radius={0.005} smoothness={3} position={[0, 0.774, -0.31]} castShadow receiveShadow>
+      <RoundedBox args={[0.3, 0.012, 0.2]} radius={0.005} smoothness={2} position={[0, 0.774, -0.31]} castShadow receiveShadow>
         <meshStandardMaterial color="#c3c7ce" roughness={0.25} metalness={0.9} />
       </RoundedBox>
-      <RoundedBox args={[0.06, 0.38, 0.022]} radius={0.008} smoothness={3} position={[0, 0.96, -0.345]} castShadow>
+      <RoundedBox args={[0.06, 0.38, 0.022]} radius={0.008} smoothness={2} position={[0, 0.96, -0.345]} castShadow>
         <meshStandardMaterial color="#c3c7ce" roughness={0.25} metalness={0.9} />
       </RoundedBox>
 
@@ -63,7 +63,7 @@ export function Monitor({
       <RoundedBox
         args={[width + 0.03, height + 0.03, 0.03]}
         radius={0.012}
-        smoothness={4}
+        smoothness={3}
         position={[center.x, center.y, center.z - 0.018]}
         castShadow
       >

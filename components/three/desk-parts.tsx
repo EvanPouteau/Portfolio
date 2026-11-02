@@ -21,7 +21,7 @@ export function Desk() {
   const wood = useMemo(() => walnut(), []);
   return (
     <group>
-      <RoundedBox args={[2.5, 0.05, 1.05]} radius={0.02} smoothness={4} position={[0, 0.74, 0]} castShadow receiveShadow>
+      <RoundedBox args={[2.5, 0.05, 1.05]} radius={0.02} smoothness={2} position={[0, 0.74, 0]} castShadow receiveShadow>
         <meshStandardMaterial map={wood?.map} roughnessMap={wood?.rough} roughness={0.78} metalness={0} envMapIntensity={0.45} />
       </RoundedBox>
       {/* piètement en U, plus élégant que quatre pieds droits */}
@@ -56,7 +56,9 @@ export function DeskMat() {
 
 /* --------------------------------------------------------------- le clavier */
 
-const KEY_GEO = new RoundedBoxGeometry(1, 1, 1, 2, 0.18);
+/* un seul segment d’arrondi : à cette distance, les coins ronds plus fins ne se
+   voient pas, et 51 touches × 300 triangles pesaient 15 000 triangles */
+const KEY_GEO = new RoundedBoxGeometry(1, 1, 1, 1, 0.18);
 
 export function Keyboard() {
   const keys = useRef<THREE.InstancedMesh>(null);
@@ -91,7 +93,7 @@ export function Keyboard() {
 
   return (
     <group position={[-0.06, 0.778, 0.3]} rotation={[0, 0.03, 0]}>
-      <RoundedBox args={[0.45, 0.014, 0.16]} radius={0.006} smoothness={3} castShadow receiveShadow>
+      <RoundedBox args={[0.45, 0.014, 0.16]} radius={0.006} smoothness={2} castShadow receiveShadow>
         <meshStandardMaterial color="#c9ccd2" roughness={0.35} metalness={0.6} />
       </RoundedBox>
       <instancedMesh ref={keys} args={[KEY_GEO, undefined, layout.length]} castShadow>
@@ -107,7 +109,7 @@ export function Mouse() {
   return (
     <group position={[0.36, 0.786, 0.31]} rotation={[0, -0.12, 0]}>
       <mesh castShadow scale={[0.9, 0.42, 1.45]}>
-        <sphereGeometry args={[0.032, 28, 20]} />
+        <sphereGeometry args={[0.032, 18, 12]} />
         <meshStandardMaterial color="#e9ebef" roughness={0.38} />
       </mesh>
       <mesh position={[0, 0.0135, -0.012]} scale={[0.1, 0.1, 0.25]}>
@@ -129,7 +131,7 @@ export function Mug({ accent = '#4cc2ff' }: { accent?: string }) {
       [0.0405, 0.06], [0.041, 0.088], [0.0395, 0.092], [0.0365, 0.09],
       [0.035, 0.06], [0.033, 0.012], [0.0, 0.01],
     ].map(([x, y]) => new THREE.Vector2(x, y));
-    return new THREE.LatheGeometry(pts, 48);
+    return new THREE.LatheGeometry(pts, 32);
   }, []);
 
   return (
@@ -144,7 +146,7 @@ export function Mug({ accent = '#4cc2ff' }: { accent?: string }) {
       </mesh>
       {/* l'anse : demi-anneau vertical, ouvert côté tasse */}
       <mesh position={[0.04, 0.047, 0]} rotation={[0, 0, -Math.PI / 2]} castShadow>
-        <torusGeometry args={[0.024, 0.0065, 12, 28, Math.PI]} />
+        <torusGeometry args={[0.024, 0.0065, 8, 16, Math.PI]} />
         <meshStandardMaterial color={accent} roughness={0.16} />
       </mesh>
     </group>
@@ -159,28 +161,28 @@ export function Lamp() {
   return (
     <group position={[-0.95, 0.765, -0.22]} rotation={[0, 0.5, 0]}>
       <mesh castShadow receiveShadow>
-        <cylinderGeometry args={[0.075, 0.085, 0.018, 40]} />
+        <cylinderGeometry args={[0.075, 0.085, 0.018, 28]} />
         <meshStandardMaterial color="#2a2e36" roughness={0.3} metalness={0.9} />
       </mesh>
       {/* bras inférieur */}
       <group position={[0, 0.012, 0]} rotation={[0, 0, 0.32]}>
         <mesh position={[0, 0.16, 0]} castShadow><cylinderGeometry args={[0.007, 0.007, 0.32, 14]} />{arm}</mesh>
-        <mesh position={[0, 0.32, 0]}><sphereGeometry args={[0.014, 16, 12]} />{joint}</mesh>
+        <mesh position={[0, 0.32, 0]}><sphereGeometry args={[0.014, 10, 8]} />{joint}</mesh>
         {/* bras supérieur */}
         <group position={[0, 0.32, 0]} rotation={[0, 0, -1.25]}>
           <mesh position={[0, 0.13, 0]} castShadow><cylinderGeometry args={[0.006, 0.006, 0.26, 14]} />{arm}</mesh>
           {/* tête */}
           <group position={[0, 0.27, 0]} rotation={[0, 0, -0.55]}>
             <mesh castShadow>
-              <coneGeometry args={[0.07, 0.11, 40, 1, true]} />
+              <coneGeometry args={[0.07, 0.11, 24, 1, true]} />
               <meshStandardMaterial color="#20252e" roughness={0.4} metalness={0.7} side={THREE.FrontSide} />
             </mesh>
             <mesh>
-              <coneGeometry args={[0.068, 0.108, 40, 1, true]} />
+              <coneGeometry args={[0.068, 0.108, 24, 1, true]} />
               <meshBasicMaterial color="#6a5236" side={THREE.BackSide} />
             </mesh>
             <mesh position={[0, -0.03, 0]}>
-              <sphereGeometry args={[0.022, 20, 14]} />
+              <sphereGeometry args={[0.022, 12, 8]} />
               <meshBasicMaterial color="#fff1d6" toneMapped={false} />
             </mesh>
           </group>
@@ -208,7 +210,7 @@ export function Plant() {
   const pot = useMemo(() => {
     const pts = [[0, 0], [0.05, 0], [0.056, 0.01], [0.062, 0.1], [0.066, 0.104], [0.066, 0.11], [0.058, 0.11], [0.054, 0.1], [0, 0.098]]
       .map(([x, y]) => new THREE.Vector2(x, y));
-    return new THREE.LatheGeometry(pts, 40);
+    return new THREE.LatheGeometry(pts, 28);
   }, []);
 
   return (
