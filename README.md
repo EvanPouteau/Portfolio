@@ -23,8 +23,9 @@ Auvergne, je cherche un **stage en développement web du 12 avril au
 | **Un écran de chargement** qui suit l'avancement réel de la pièce, pour qu'on ne croie jamais le site vide. | **Pensé pour le téléphone** : annotations replacées, fenêtres plein écran, aide adaptée au tactile. |
 
 - **Huit projets**, dont deux applications Next.js + Supabase en production :
-  une app pour apprendre l'arabe égyptien (30 modules, 554 mots dont 524 avec
-  une prononciation vérifiée à l'oreille, exercice d'écoute, tuteur IA) et une
+  une app pour apprendre l'arabe égyptien (30 modules, 554 mots, 525 prononciations
+  vérifiées à l'oreille par une locutrice égyptienne, exercice d'écoute « À
+  l'oreille », tuteur IA) et une
   app de suivi de musculation.
 - **Un vrai gestionnaire de fenêtres** : déplacer, redimensionner, aimanter
   aux bords, Alt+Tab, menu Démarrer avec recherche, thème clair ou sombre,
