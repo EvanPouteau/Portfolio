@@ -7,7 +7,7 @@ mon parcours et mon CV.
 
 **[evanpouteau.vercel.app](https://evanpouteau.vercel.app)**
 
-![La pièce 3D d'accueil : un bureau éclairé à la lampe, des plantes et une étagère de projets](docs/images/scene-3d.webp)
+![La pièce 3D d'accueil : un poste de dev avec deux écrans et un portable, éclairé à la lampe, entre deux étagères de projets](docs/images/scene-3d.webp)
 
 Étudiant en 2ᵉ année de BUT MMI (parcours Développement) à l'IUT Clermont
 Auvergne, je cherche un **stage en développement web du 12 avril au
@@ -69,9 +69,10 @@ en production.
 - **Three.js** avec **React Three Fiber** et **drei**
 - **Tailwind CSS 4** · polices auto-hébergées · déploiement sur **Vercel**
 
-Toute la pièce est générée par du code : meubles, plantes, guirlande et
-matières (bois, feutre, tapis) sont construits dans le navigateur, sans aucun
-modèle 3D importé.
+Toute la pièce est générée par du code : bureau, écrans, portable, tour PC,
+bibliothèque, plantes et matières (bois, feutre) sont construits dans le
+navigateur, sans aucun modèle 3D importé. Le code et le terminal affichés sur
+les écrans sont dessinés dans un canvas.
 
 ## Quelques choix techniques
 

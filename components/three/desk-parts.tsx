@@ -159,7 +159,7 @@ export function Lamp() {
   const joint = <meshStandardMaterial color="#2a2e36" roughness={0.3} metalness={0.9} />;
   const arm = <meshStandardMaterial color="#d8dbe0" roughness={0.25} metalness={0.85} />;
   return (
-    <group position={[-0.95, 0.765, -0.22]} rotation={[0, 0.5, 0]}>
+    <group position={[-1.1, 0.765, -0.36]} rotation={[0, 0.5, 0]}>
       <mesh castShadow receiveShadow>
         <cylinderGeometry args={[0.075, 0.085, 0.018, 28]} />
         <meshStandardMaterial color="#2a2e36" roughness={0.3} metalness={0.9} />
@@ -194,7 +194,7 @@ export function Lamp() {
 
 /* ------------------------------------------------------------------ la plante */
 
-export function Plant() {
+export function Plant({ position = [1.0, 0.765, -0.3] as [number, number, number] }) {
   /* Sansevieria : feuilles longues et effilées, chacune légèrement tordue. */
   const leaves = useMemo(() => {
     const rand = (i: number) => Math.abs(Math.sin(i * 91.7) * 43758.5) % 1;
@@ -214,7 +214,7 @@ export function Plant() {
   }, []);
 
   return (
-    <group position={[1.0, 0.765, -0.3]}>
+    <group position={position}>
       <mesh geometry={pot} castShadow receiveShadow>
         <meshStandardMaterial color="#e8e2d8" roughness={0.65} />
       </mesh>

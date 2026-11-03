@@ -12,7 +12,8 @@ import { Warmup, useWarmup } from './warmup';
 import * as THREE from 'three';
 import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib.js';
 import { Desk, DeskMat, Keyboard, Mouse, Mug, Lamp, Plant, Notebook, Room } from './desk-parts';
-import { Monstera, FiddleFig, HangingPothos, StringLights, Candle, Rug } from './cozy';
+import { Monstera } from './cozy';
+import { CodeMonitor, Laptop, PcTower, RubberDuck, Headphones, Bookcase } from './dev-setup';
 import { Monitor, SCREEN } from './monitor';
 import { ProjectShelf, SHELF_X, SHELF_Y, SHELF_Z } from './project-shelf';
 import { LabelProjector, useLabelRegistry, type Anchor } from './projected-labels';
@@ -139,22 +140,20 @@ function Scene({
         { color: accent, intensity: 1.4, position: [0, 1.3, -1], scale: [1.2, 1.2], target: [0, 1.3, 2], circle: true },
       ]} />
 
-      {/* Lumière tamisée : aucune source froide, des intensités basses, et
-          plusieurs petites lumières chaudes plutôt qu'une grosse. */}
-      <hemisphereLight args={['#ffd9b5', '#2b1a10', 0.24]} />
+      {/* Lumière tamisée, sans source froide. Pas de lumière décorative :
+          le plafonnier, la lampe de bureau, et les écrans. */}
+      <hemisphereLight args={['#ffd9b5', '#2b1a10', 0.26]} />
       <ambientLight intensity={0.06} />
-      <pointLight position={[0, 2.6, -0.65]} intensity={1.05} distance={3.6} decay={1.8} color="#ffcf9a" />
-      <pointLight position={[-0.74, 1.12, -0.1]} intensity={2.3} distance={2.8} decay={2} color="#ffb06a" castShadow shadow-mapSize={[1024, 1024]} shadow-bias={-0.0004} />
+      <pointLight position={[0, 2.6, -0.65]} intensity={1.35} distance={3.8} decay={1.8} color="#ffcf9a" />
+      <pointLight position={[-0.89, 1.12, -0.24]} intensity={2.3} distance={2.8} decay={2} color="#ffb06a" castShadow shadow-mapSize={[1024, 1024]} shadow-bias={-0.0004} />
       <directionalLight position={[2.2, 3, 2]} intensity={0.32} color="#ffe0c2" castShadow shadow-mapSize={[2048, 2048]} shadow-bias={-0.0003}
         shadow-camera-left={-3} shadow-camera-right={3} shadow-camera-top={3} shadow-camera-bottom={-1} />
 
-      <Rug />
-      <StringLights from={[-1.68, 2.42, -1.27]} to={[1.68, 2.42, -1.27]} sag={0.2} />
       <Monstera position={[1.78, 0, -0.62]} scale={1.15} />
-      <FiddleFig position={[-2.2, 0, -0.72]} scale={0.9} />
-      <HangingPothos position={[2.24, 2.36, -0.98]} short />
-      <HangingPothos position={[-2.24, 2.36, -0.98]} short />
-      <Candle position={[-0.68, 0.805, 0.2]} />
+      <Bookcase position={[-1.98, 0, -1.18]}>
+        <Plant position={[0.18, 0, 0]} />
+      </Bookcase>
+      <PcTower position={[-1.5, 0, -0.2]} yaw={0.2} />
 
       <Room accent={accent} />
       <Desk />
@@ -170,7 +169,10 @@ function Scene({
       <Mouse />
       <Mug accent={accent} />
       <Lamp />
-      <Plant />
+      <CodeMonitor position={[0.92, 0.765, -0.24]} yaw={-0.5} />
+      <Laptop position={[-0.74, 0.765, -0.14]} yaw={0.45} />
+      <RubberDuck position={[-0.5, 0.765, 0.22]} yaw={0.5} />
+      <Headphones position={[1.08, 0.765, 0.3]} yaw={-0.35} />
       <Notebook accent={accent} />
       <ProjectShelf projects={projects} onOpen={onOpenProject} onHover={onHover} hoverObj={hoverObj} disabled={mode !== 'idle'} />
       <LabelProjector anchors={anchors} registry={registry} />
