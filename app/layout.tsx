@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: '%s — Evan Pouteau',
   },
   description:
-    "Portfolio interactif d'Evan Pouteau, étudiant en BUT MMI à l'IUT Clermont Auvergne et développeur web. Applications Next.js et Supabase, projets design et UX. Recherche un stage en développement web du 12 avril au 18 juin 2027.",
+    "Portfolio interactif d'Evan Pouteau, étudiant en BUT MMI à l'IUT Clermont Auvergne et développeur web. Applications Next.js et Supabase, projets design et UX. Recherche un stage en développement web à partir d'avril.",
   authors: [{ name: 'Evan Pouteau' }],
   openGraph: {
     type: 'website',

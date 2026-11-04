@@ -10,8 +10,8 @@ mon parcours et mon CV.
 ![La pièce 3D d'accueil : un poste de dev avec deux écrans et un portable, éclairé à la lampe, entre deux étagères de projets](docs/images/scene-3d.webp)
 
 Étudiant en 2ᵉ année de BUT MMI (parcours Développement) à l'IUT Clermont
-Auvergne, je cherche un **stage en développement web du 12 avril au
-18 juin 2027**. [LinkedIn](https://www.linkedin.com/in/evan-pouteau-06a9a7342)
+Auvergne, je cherche un **stage en développement web à partir
+d'avril**. [LinkedIn](https://www.linkedin.com/in/evan-pouteau-06a9a7342)
 
 ## Ce qu'on y trouve
 

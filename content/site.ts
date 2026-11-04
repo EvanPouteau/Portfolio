@@ -15,8 +15,8 @@ export const ROLE: L = {
 };
 
 export const AVAILABILITY: L = {
-  fr: 'Recherche un stage en développement web · 12 avril → 18 juin 2027',
-  en: 'Seeking a web development internship · 12 April → 18 June 2027',
+  fr: 'Recherche un stage en développement web · à partir d’avril',
+  en: 'Seeking a web development internship · starting in April',
 };
 
 export const INTRO: L[] = [
@@ -45,8 +45,8 @@ export const SPECS: { k: L; v: L }[] = [
   {
     k: { fr: 'Recherche', en: 'Looking for' },
     v: {
-      fr: 'Un stage en développement web, du 12 avril au 18 juin 2027',
-      en: 'A web development internship, 12 April to 18 June 2027',
+      fr: 'Un stage en développement web, à partir d’avril',
+      en: 'A web development internship, starting in April',
     },
   },
   {
@@ -159,8 +159,8 @@ export const GREETING: L = {
 };
 
 export const PITCH: L = {
-  fr: 'Je suis étudiant en BUT MMI à Puy-en-Velay et je cherche un stage en développement web du 12 avril au 18 juin 2027.',
-  en: 'I’m a BUT MMI student in Puy-en-Velay, looking for a web development internship from 12 April to 18 June 2027.',
+  fr: 'Je suis étudiant en BUT MMI à Puy-en-Velay et je cherche un stage en développement web à partir d’avril.',
+  en: 'I’m a BUT MMI student in Puy-en-Velay, looking for a web development internship starting in April.',
 };
 
 export const NOW: { icon: 'school' | 'tool' | 'heart'; text: L }[] = [

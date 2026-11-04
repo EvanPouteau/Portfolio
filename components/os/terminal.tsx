@@ -52,8 +52,8 @@ export function TerminalWin({ openWin, lang }: Ctx) {
         <K>Evan Pouteau</K>,
         en ? 'Second-year BUT MMI student (web development track), IUT Clermont Auvergne.'
            : 'Étudiant en 2ᵉ année de BUT MMI (parcours Développement), IUT Clermont Auvergne.',
-        en ? 'Two Next.js + Supabase apps in production. Seeking a web development internship, 12 April to 18 June 2027.'
-           : 'Deux applications Next.js + Supabase en production. Recherche un stage en développement web du 12 avril au 18 juin 2027.',
+        en ? 'Two Next.js + Supabase apps in production. Seeking a web development internship, starting in April.'
+           : 'Deux applications Next.js + Supabase en production. Recherche un stage en développement web à partir d’avril.',
         '\u00a0',
         <Link to="about">{en ? 'Open the full profile →' : 'Ouvrir la fiche complète →'}</Link>,
       ),
