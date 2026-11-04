@@ -11,8 +11,8 @@ export const SITE = {
 } as const;
 
 export const ROLE: L = {
-  fr: 'Étudiant en BUT MMI · Développeur web front-end',
-  en: 'BUT MMI student · Front-end web developer',
+  fr: 'Étudiant en BUT MMI · Développeur web full-stack',
+  en: 'BUT MMI student · Full-stack web developer',
 };
 
 export const AVAILABILITY: L = {
