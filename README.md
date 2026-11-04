@@ -11,7 +11,8 @@ mon parcours et mon CV.
 
 Étudiant en 2ᵉ année de BUT MMI (parcours Développement) à l'IUT Clermont
 Auvergne, je cherche un **stage en développement web à partir
-d'avril**. [LinkedIn](https://www.linkedin.com/in/evan-pouteau-06a9a7342)
+d'avril**. [LinkedIn](https://www.linkedin.com/in/evan-pouteau-06a9a7342) ·
+[GitHub](https://github.com/EvanPouteau)
 
 ## Ce qu'on y trouve
 

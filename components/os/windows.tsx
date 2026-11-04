@@ -274,6 +274,9 @@ export function ContactWin({ lang }: Ctx) {
         <a className="link-card" href={SITE.linkedin} target="_blank" rel="noopener">
           <Icon name="linkedin" /><span><b>LinkedIn</b><i>{en ? 'Background, experience and network' : 'Parcours, expériences et réseau'}</i></span><Icon name="external" size={15} className="ic-end" />
         </a>
+        <a className="link-card" href={SITE.github} target="_blank" rel="noopener">
+          <Icon name="github" /><span><b>GitHub</b><i>{en ? 'The code of my projects' : 'Le code de mes projets'}</i></span><Icon name="external" size={15} className="ic-end" />
+        </a>
         <a className="link-card" href={`mailto:${SITE.email}`}>
           <Icon name="mail" /><span><b>{SITE.email}</b><i>{en ? 'Usually a reply within 48 hours' : 'Réponse sous 48 h en général'}</i></span>
         </a>

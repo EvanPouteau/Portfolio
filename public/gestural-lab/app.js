@@ -73,7 +73,7 @@ class GesturalPortfolio {
 
             { id: 4, color: C.pink, title: "Contact", file: "contact.sh", index: "04",
               content: `<div style="text-align:center; margin-top:10px;">
-                    <p style="font-size:1.05rem; margin-bottom:12px;"><strong>Email</strong><br><a href="mailto:pouteaue78@gmail.com">pouteaue78@gmail.com</a></p>
+                    <p style="font-size:1.05rem; margin-bottom:12px;"><strong>Email</strong><br><a href="mailto:pouteauevan@gmail.com">pouteauevan@gmail.com</a></p>
                     <p style="font-size:1.05rem;"><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/evan-pouteau-06a9a7342" target="_blank">Evan Pouteau</a></p>
                 </div>`,
               hoverProgress: 0, x: 0, y: 0, w: 0, h: 0, drawX: 0, drawY: 0 }

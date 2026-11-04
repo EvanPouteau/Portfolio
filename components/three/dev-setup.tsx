@@ -116,7 +116,7 @@ const TERMINAL: Run[][] = [
   [[' ✓ ', STRING], ['Compiled / in 2.1s', TXT]],
   [],
   [['evan@portfolio', STRING], [':~$ ', TXT], ['git push', TXT]],
-  [['To github.com:ZabisFR/Portfolio', MUTED]],
+  [['To github.com:EvanPouteau/Portfolio', MUTED]],
   [['   2379662..master', MUTED]],
   [['evan@portfolio', STRING], [':~$ ', TXT], ['▍', KEYWORD]],
 ];

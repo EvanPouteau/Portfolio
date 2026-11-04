@@ -3,7 +3,8 @@ import type { L } from './projects';
 export const SITE = {
   name: 'Evan Pouteau',
   url: 'https://evanpouteau.vercel.app',
-  email: 'pouteaue78@gmail.com',
+  email: 'pouteauevan@gmail.com',
+  github: 'https://github.com/EvanPouteau',
   linkedin: 'https://www.linkedin.com/in/evan-pouteau-06a9a7342',
   city: 'Puy-en-Velay',
   cv: { fr: '/assets/docs/CV-Evan-Pouteau-FR.pdf', en: '/assets/docs/CV-Evan-Pouteau-EN.pdf' },
