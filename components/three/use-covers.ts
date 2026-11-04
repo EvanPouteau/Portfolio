@@ -14,7 +14,7 @@ import { PROJECTS } from '@/content/projects';
 export type CoverSize = 'shelf' | '3d';
 
 const urls = (size: CoverSize) =>
-  PROJECTS.map((p) => (p.cover ? p.cover.replace('/assets/covers/', `/assets/covers/${size}/`) : '/assets/og.png'));
+  PROJECTS.map((p) => (p.cover ? p.cover.replace('/assets/covers/', `/assets/covers/${size}/`) : '/assets/og.png?v=2'));
 
 export function useCovers(size: CoverSize): Record<string, THREE.Texture> {
   const list = useMemo(() => urls(size), [size]);

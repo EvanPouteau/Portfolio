@@ -45,7 +45,7 @@ export function WelcomeWin({ openWin, lang }: { openWin: Go; lang: Lang }) {
   return (
     <div className="welcome">
       <header className="welcome-hero">
-        <img src="/assets/images/profil.webp" width={84} height={84} alt="" className="welcome-avatar" />
+        <img src="/assets/images/profil.webp?v=2" width={84} height={84} alt="" className="welcome-avatar" />
         <div>
           <h2 className="welcome-hi"><Icon name="hand" size={26} />{GREETING[lang]}</h2>
           <p className="welcome-pitch">{PITCH[lang]}</p>
@@ -93,7 +93,7 @@ export function Widgets({ openWin, lang }: { openWin: Go; lang: Lang }) {
   return (
     <aside className="widgets" aria-label={en ? 'About me, at a glance' : 'En un coup d’œil'}>
       <section className="widget w-profile">
-        <img src="/assets/images/profil.webp" width={64} height={64} alt={en ? 'Portrait of Evan Pouteau' : 'Portrait d’Evan Pouteau'} />
+        <img src="/assets/images/profil.webp?v=2" width={64} height={64} alt={en ? 'Portrait of Evan Pouteau' : 'Portrait d’Evan Pouteau'} />
         <div>
           <b>Evan Pouteau</b>
           <span>{en ? 'BUT MMI student · Puy-en-Velay' : 'Étudiant en BUT MMI · Puy-en-Velay'}</span>

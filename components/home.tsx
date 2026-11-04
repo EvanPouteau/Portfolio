@@ -166,7 +166,7 @@ export default function Home() {
                   <button className="btn" onClick={() => { setPending('gallery'); enter(); }}>
                     {lang === 'en' ? 'Browse projects in 3D' : 'Parcourir les projets en 3D'}
                   </button>
-                  <a className="btn" href={lang === 'en' ? '/assets/docs/CV-Evan-Pouteau-EN.pdf' : '/assets/docs/CV-Evan-Pouteau-FR.pdf'} download>
+                  <a className="btn" href={lang === 'en' ? '/assets/docs/CV-Evan-Pouteau-EN.pdf?v=2' : '/assets/docs/CV-Evan-Pouteau-FR.pdf?v=2'} download>
                     {lang === 'en' ? 'Download CV' : 'Télécharger le CV'}
                   </a>
                 </div>
@@ -216,7 +216,7 @@ function Loader({ progress, lang, onSkip }: { progress: number; lang: 'fr' | 'en
       {onSkip && !done && (
         <div className="loader-skip">
           <button onClick={onSkip}>{lang === 'en' ? 'Skip the 3D intro →' : 'Passer l’intro 3D →'}</button>
-          <a href={lang === 'en' ? '/assets/docs/CV-Evan-Pouteau-EN.pdf' : '/assets/docs/CV-Evan-Pouteau-FR.pdf'} download>
+          <a href={lang === 'en' ? '/assets/docs/CV-Evan-Pouteau-EN.pdf?v=2' : '/assets/docs/CV-Evan-Pouteau-FR.pdf?v=2'} download>
             {lang === 'en' ? 'Download CV' : 'Télécharger le CV'}
           </a>
         </div>

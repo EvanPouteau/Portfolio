@@ -98,7 +98,7 @@ export function TerminalWin({ openWin, lang }: Ctx) {
       fr: 'télécharger mon CV', en: 'download my CV',
       run: () => {
         const href = SITE.cv[lang];
-        push(<D>{en ? 'Downloading' : 'Téléchargement de'} {href.split('/').pop()}…</D>);
+        push(<D>{en ? 'Downloading' : 'Téléchargement de'} {href.split('?')[0].split('/').pop()}…</D>);
         const a = document.createElement('a'); a.href = href; a.download = ''; a.click();
       },
     },

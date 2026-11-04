@@ -355,7 +355,7 @@ function StartMenu({ lang, openWin, onBackTo3D, onShutdown }: {
         </>
       )}
       <div className="start-foot">
-        <div className="start-user"><img src="/assets/images/profil.webp" width={32} height={32} alt="" /><span>Evan Pouteau</span></div>
+        <div className="start-user"><img src="/assets/images/profil.webp?v=2" width={32} height={32} alt="" /><span>Evan Pouteau</span></div>
         <div className="start-foot-btns">
           {onBackTo3D && (
             <button className="iconbtn" onClick={onBackTo3D} title={lang === 'en' ? 'Back to the 3D desk' : 'Retour au bureau 3D'}

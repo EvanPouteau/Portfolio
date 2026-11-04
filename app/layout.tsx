@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     siteName: 'Evan Pouteau',
-    images: [{ url: '/assets/og.png', width: 1200, height: 630, alt: "EvanOS — le portfolio d'Evan Pouteau" }],
+    images: [{ url: '/assets/og.png?v=2', width: 1200, height: 630, alt: "EvanOS — le portfolio d'Evan Pouteau" }],
   },
-  twitter: { card: 'summary_large_image', images: ['/assets/og.png'] },
+  twitter: { card: 'summary_large_image', images: ['/assets/og.png?v=2'] },
   icons: { icon: '/favicon.svg', apple: '/assets/icon-180.png' },
 };
 

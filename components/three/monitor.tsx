@@ -10,7 +10,7 @@ import { RoundedBox, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { roundedRect } from './materials';
 
-const SCREEN_URL = '/assets/screen/os-desktop.webp';
+const SCREEN_URL = '/assets/screen/os-desktop.webp?v=2';
 
 /** Position et taille de la dalle, partagées avec la caméra qui vise dedans. */
 export const SCREEN = {

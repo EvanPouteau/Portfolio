@@ -21,7 +21,7 @@ export function AboutWin({ openWin, lang }: Ctx) {
   return (
     <>
       <div className="about-hero">
-        <img src="/assets/images/profil.webp" width={104} height={104} alt={en ? 'Portrait of Evan Pouteau' : 'Portrait d’Evan Pouteau'} className="about-avatar" />
+        <img src="/assets/images/profil.webp?v=2" width={104} height={104} alt={en ? 'Portrait of Evan Pouteau' : 'Portrait d’Evan Pouteau'} className="about-avatar" />
         <div>
           <h2 className="h1">Evan Pouteau</h2>
           <p className="lede">{ROLE[lang]}</p>

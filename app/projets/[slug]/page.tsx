@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       title,
       description: p.tagline.fr,
       url: `${SITE.url}/projets/${p.slug}`,
-      images: p.cover ? [{ url: p.cover, width: 1200, height: 750 }] : ['/assets/og.png'],
+      images: p.cover ? [{ url: p.cover, width: 1200, height: 750 }] : ['/assets/og.png?v=2'],
     },
   };
 }

@@ -7,7 +7,7 @@ export const SITE = {
   github: 'https://github.com/EvanPouteau',
   linkedin: 'https://www.linkedin.com/in/evan-pouteau-06a9a7342',
   city: 'Puy-en-Velay',
-  cv: { fr: '/assets/docs/CV-Evan-Pouteau-FR.pdf', en: '/assets/docs/CV-Evan-Pouteau-EN.pdf' },
+  cv: { fr: '/assets/docs/CV-Evan-Pouteau-FR.pdf?v=2', en: '/assets/docs/CV-Evan-Pouteau-EN.pdf?v=2' },
 } as const;
 
 export const ROLE: L = {
