@@ -253,7 +253,7 @@ export const PROJECTS: Project[] = [
     tags: ['MediaPipe', 'Canvas API', 'JavaScript'],
     role: { fr: 'Conception et développement', en: 'Design and development' },
     context: { fr: 'Expérimentation personnelle', en: 'Personal experiment' },
-    cover: '/assets/covers/experience-gestuelle.webp',
+    cover: '/assets/covers/experience-gestuelle.webp?v=2',
     blocks: [
       {
         h: { fr: 'Le projet', en: 'The project' },

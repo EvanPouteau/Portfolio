@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gesture AI — Interface gestuelle · Evan Pouteau</title>
+    <title>Expérience gestuelle · Evan Pouteau</title>
+    <meta name="theme-color" content="#15100e">
+    <link rel="icon" href="/assets/icon-180.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&family=Cascadia+Code:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
     <link rel="stylesheet" href="style.css">
 
@@ -24,60 +26,70 @@
 
         <!-- Barre supérieure -->
         <header class="lab-topbar">
-            <a class="lab-brand" href="/">
-                <span class="brand-mark">EP</span>
-                <span class="brand-back"><i class="ph-bold ph-arrow-left"></i> retour au portfolio</span>
-            </a>
-            <div class="lab-title">gesture_ai<span class="ext">.exe</span></div>
-            <div class="lab-status" id="lab-status"><span class="dot off"></span> caméra : en attente</div>
+            <a class="lab-back" href="/"><i class="ph-bold ph-arrow-left"></i><span>Retour au portfolio</span></a>
+            <div class="lab-status" id="lab-status"><span class="dot off"></span><span class="status-text">caméra en attente</span></div>
         </header>
+
+        <!-- Titre manuscrit, comme les annotations de la pièce 3D -->
+        <div class="lab-note hidden" id="lab-note">
+            <span class="note-title" id="note-title">Mon bureau, à main levée</span>
+            <span class="note-sub" id="note-sub">la lampe suit votre index · gardez-la sur un objet pour l'ouvrir</span>
+        </div>
 
         <!-- Écran de démarrage -->
         <div class="start-screen" id="start-screen">
-            <div class="start-card">
-                <div class="start-glyph"><i class="ph-duotone ph-hand-pointing"></i></div>
-                <p class="start-kicker">// expérimentation · vision par ordinateur</p>
-                <h1>Interface gestuelle</h1>
-                <p class="start-desc">
-                    Pilotez ce mini-portfolio <em>avec votre main</em>, sans souris ni clavier.
-                    La caméra suit le bout de votre index.
-                </p>
-                <ul class="start-steps">
-                    <li><i class="ph-bold ph-cursor"></i> Pointez pour déplacer le curseur</li>
-                    <li><i class="ph-bold ph-timer"></i> Maintenez sur un bloc pour l'ouvrir</li>
-                    <li><i class="ph-bold ph-hand-swipe-left"></i> Balayez pour fermer</li>
-                </ul>
-                <button id="start-btn" class="lab-btn"><i class="ph-bold ph-video-camera"></i> Activer la caméra</button>
-                <p class="start-note"><i class="ph-fill ph-lock-simple"></i> Traitement 100% local — aucune image n'est envoyée en ligne.</p>
-                <p class="start-error hidden" id="start-error"></p>
+            <div class="start-win">
+                <div class="win-bar">
+                    <i class="ph ph-hand-pointing"></i><span>Expérience gestuelle</span>
+                    <span class="win-btns">—&nbsp;&nbsp;&nbsp;☐&nbsp;&nbsp;&nbsp;✕</span>
+                </div>
+                <div class="start-body">
+                    <p class="start-hand">Éteignez la souris, allumez la lampe…</p>
+                    <h1>Explorez mon bureau <em>avec votre main</em></h1>
+                    <p class="start-desc">
+                        La caméra suit le bout de votre index : il éclaire le bureau comme une lampe.
+                        Quatre objets y sont posés, chacun raconte quelque chose sur moi.
+                    </p>
+                    <ol class="start-steps">
+                        <li><span>1</span><i class="ph ph-hand-pointing"></i> Pointez l'index vers l'écran pour déplacer la lumière</li>
+                        <li><span>2</span><i class="ph ph-timer"></i> Gardez-la sur un objet pour l'ouvrir</li>
+                        <li><span>3</span><i class="ph ph-hand-swipe-left"></i> Balayez ou éloignez la main pour le refermer</li>
+                    </ol>
+                    <div class="start-actions">
+                        <button id="start-btn" class="lab-btn primary"><i class="ph-bold ph-video-camera"></i> Activer la caméra</button>
+                        <button id="mouse-btn" class="lab-btn"><i class="ph-bold ph-mouse-simple"></i> Essayer sans caméra</button>
+                    </div>
+                    <p class="start-note"><i class="ph-fill ph-lock-simple"></i> Tout se passe dans votre navigateur : aucune image ne quitte votre appareil.</p>
+                    <p class="start-error hidden" id="start-error"></p>
+                </div>
             </div>
         </div>
 
-        <!-- Aperçu caméra (PiP) avec squelette de la main -->
+        <!-- Aperçu caméra avec squelette de la main -->
         <div class="pip hidden" id="pip">
             <canvas id="pip-canvas" width="240" height="180"></canvas>
-            <span class="pip-label"><span class="pip-dot"></span> VISION — votre main</span>
+            <span class="pip-label"><span class="pip-dot"></span> votre main</span>
         </div>
 
-        <!-- Aide gestuelle -->
+        <!-- Aide en bas -->
         <div class="hints hidden" id="hints">
-            <span><i class="ph-bold ph-cursor"></i> pointez</span>
-            <span class="sep">/</span>
+            <span><i class="ph-bold ph-hand-pointing"></i> pointez</span>
+            <span class="sep">·</span>
             <span><i class="ph-bold ph-timer"></i> maintenez</span>
-            <span class="sep">/</span>
+            <span class="sep">·</span>
             <span><i class="ph-bold ph-hand-swipe-left"></i> balayez pour fermer</span>
         </div>
 
-        <!-- Panneau d'information -->
+        <!-- Fenêtre d'information, comme celles de l'OS du portfolio -->
         <div id="info-panel" class="hidden">
-            <div class="panel-bar">
-                <span class="td r"></span><span class="td y"></span><span class="td g"></span>
-                <span class="panel-file" id="panel-file">readme.md</span>
+            <div class="win-bar">
+                <i class="ph" id="panel-icon"></i><span id="panel-file">À propos</span>
+                <button class="win-close" id="panel-close" aria-label="Fermer">✕</button>
             </div>
             <div class="panel-inner">
                 <h2 id="panel-title">Titre</h2>
                 <div id="panel-content">Contenu…</div>
-                <p class="close-hint"><i class="ph-bold ph-hand-swipe-left"></i> Éloignez ou balayez la main pour fermer.</p>
+                <p class="close-hint" id="close-hint"><i class="ph-bold ph-hand-swipe-left"></i> Balayez ou éloignez la main pour refermer.</p>
             </div>
         </div>
 
